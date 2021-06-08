@@ -7,7 +7,7 @@ const Weather =(props) =>{
     // py-4 mean top and bottom padding of 4 
     // px -4 right and left padding of 4 
     return (
-<div className="container">
+<div className="container text-light">
 <div className="cards pt-4">
 <h1>{props.city} </h1>
 <h5 className="py-4"> 

@@ -2,11 +2,14 @@ import React from "react";
 import "./form.styles.css";
 
 const Form = (props) => {
+
   return (
     <div className="container">
-        <div> {props.error ? error() : null}</div>
+     
+        <div> {props.form_city === "" || props.form_country ==="" ? (!props.celsius ? props.error ? error() : null : null) : 
+        (props.celsius ? ( props.form_city === "" || props.form_country ==="" && !props.error ? error() :null) : null) }</div>
      <form onSubmit={props.loadWeather} >
-
+ 
      <div className="row">
         <div className="col-md-3 offset-md-2">
           <input
@@ -15,6 +18,9 @@ const Form = (props) => {
             name="city"
             autoComplete="off"
             placeholder='City'
+            onChange={(e) => {
+                console.log("e in form city ",e.target.value)
+                props.setCity(e.target.value)}}
           />
         </div>
         <div className="col-md-3">
@@ -24,6 +30,8 @@ const Form = (props) => {
             name="country"
             autoComplete="off"
             placeholder='Country'
+            onChange={(e) => {
+                props.setCity(e.target.value)}}
           />
         </div>
         <div className="col-md-3 mt-md-0 text-md-left">

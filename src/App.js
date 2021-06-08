@@ -22,7 +22,10 @@ class App  extends  React.Component{
       temp_max:undefined,
       temp_min:undefined,
       description:"",
-      error: false
+      error: false,
+
+      form_city:"",
+      form_country:""
     }
     
     this.weatherIcon={
@@ -76,7 +79,8 @@ class App  extends  React.Component{
     }
   }
 getWeather = async(e) =>{
-  e.prevent.default();
+  e.preventDefault();
+  console.log("e",e.target)
   const city =e.target.elements.city.value
   const country =e.target.elements.country.value
 
@@ -104,11 +108,20 @@ getWeather = async(e) =>{
   
 }
   render(){
+
+   
     return(
       <div className="App">
         <Form
         loadWeather={this.getWeather}
         error={this.state.error}
+        celsius={this.state.celsius}
+        form_city={this.state.form_city}
+        setCity = { (e) => {
+          this.setState({form_city:e?.target?.value})}}
+          
+        form_country={this.state.form_country}
+        setCountry ={(e) => this.setState({form_country:e.target.value})}
         />
       <Weather
       city={this.state.city}
